@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  system-prune:
+    image: docker
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    command: docker system prune --all --force --volumes
+    deploy:
+      mode: global
+      restart_policy:
+        delay: 12h
+    network_mode: "none"
